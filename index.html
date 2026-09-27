@@ -59,7 +59,6 @@
   .lv-tab.active{background:linear-gradient(135deg,rgba(74,222,128,.22),rgba(96,165,250,.22));color:#fff;border-color:rgba(255,255,255,.3);}
   .levels-wrap.hidden{display:none;}
 
-  /* ===== LEVEL CAROUSEL ===== */
   .levels-viewport{
     position:relative;
     width:100%;
@@ -109,7 +108,6 @@
   .levels-track .lc-bar i{display:block;height:100%;width:0%;border-radius:99px;background:var(--c,#a855f7);box-shadow:0 0 8px var(--c,#a855f7);}
   .levels-track .lc-best{font-size:6px;letter-spacing:.08em;color:rgba(255,255,255,.45);font-weight:700;text-transform:uppercase;position:relative;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-  /* Custom level card actions */
   .levels-track .lc-actions{display:flex;gap:4px;justify-content:flex-end;position:relative;}
   .levels-track .lc-act{
     font-family:inherit;font-size:9px;font-weight:800;line-height:1;
@@ -284,7 +282,6 @@
             <button class="lv-tab" data-lvtab="mini">Mini Levels</button>
           </div>
 
-          <!-- ===== MAIN LEVELS CAROUSEL ===== -->
           <div class="levels-wrap" id="mainLevelsWrap">
             <div class="levels-viewport">
               <div class="levels-track" id="mainLevels" style="--per-page:4">
@@ -355,7 +352,7 @@
                   </div>
                 </button>
                 <button class="level-card" data-i="6" style="--c:#0d5c2e">
-                  <div class="lc-top"><span class="lc-num">07</span><span class="lc-diff">HARDEST</span></div>
+                  <div class="lc-top"><span class="lc-num">07</span><span class="lc-diff">HARDER</span></div>
                   <div>
                     <div class="lc-name">Nightshade</div>
                     <div class="lc-song">♪ Nightshade</div>
@@ -385,7 +382,6 @@
             </div>
           </div>
 
-          <!-- ===== MINI LEVELS CAROUSEL ===== -->
           <div class="levels-wrap hidden" id="miniLevelsWrap">
             <div class="levels-viewport">
               <div class="levels-track" id="miniLevels" style="--per-page:4">
@@ -505,9 +501,6 @@
 (() => {
 'use strict';
 
-/* =========================================================
-   CONSTANTS
-   ========================================================= */
 const W = 1280, H = 720, GROUND_Y = 620;
 const PS = 56, SPEED = 462;
 const GRAVITY_UP = 2800, GRAVITY_DOWN = 4800, JUMP_V = -965;
@@ -625,9 +618,6 @@ function drawCubeSkin(c, skinId, size, primary, secondary, rot){
       c.beginPath(); c.arc(Math.cos(a) * S*0.33, Math.sin(a) * S*0.33, S*0.045, 0, Math.PI*2); c.fill();
     }
   } else if (skinId === 'flame'){
-    /* Flame skin now fully customizable:
-       - primary drives the red body / outline / shading
-       - secondary drives the yellow eyes and teeth-mouth */
     const bodyLight = mixColor(primary, '#ffffff', 0.35);
     const bodyMid   = primary;
     const bodyDark  = mixColor(primary, '#000000', 0.55);
@@ -695,8 +685,6 @@ function drawCubeSkin(c, skinId, size, primary, secondary, rot){
     c.closePath();
     c.fill();
   } else if (skinId === 'watcher'){
-    /* Watcher: a block with two big glowing eyes and NO mouth.
-       Dark, unsettling, staring. */
     const darkBody = mixColor(primary, '#000000', 0.82);
     const darkEdge = mixColor(primary, '#000000', 0.92);
 
@@ -711,7 +699,6 @@ function drawCubeSkin(c, skinId, size, primary, secondary, rot){
     c.stroke();
     c.restore();
 
-    /* two large vertical oval eyes */
     const eyeW = S * 0.24;
     const eyeH = S * 0.34;
     const eyeOffX = S * 0.20;
@@ -728,7 +715,6 @@ function drawCubeSkin(c, skinId, size, primary, secondary, rot){
     c.fill();
     c.restore();
 
-    /* slit pupils */
     c.fillStyle = darkBody;
     const pupilW = eyeW * 0.16;
     const pupilH = eyeH * 0.72;
@@ -739,7 +725,6 @@ function drawCubeSkin(c, skinId, size, primary, secondary, rot){
     c.ellipse( eyeOffX, eyeY, pupilW/2, pupilH/2, 0, 0, Math.PI*2);
     c.fill();
 
-    /* tiny bright glints */
     c.save();
     c.fillStyle = '#ffffff';
     c.globalAlpha = 0.9;
@@ -751,7 +736,6 @@ function drawCubeSkin(c, skinId, size, primary, secondary, rot){
     c.fill();
     c.restore();
 
-    /* dark vignette to make it creepier */
     const vg = c.createRadialGradient(0, 0, S*0.18, 0, 0, S*0.75);
     vg.addColorStop(0, 'rgba(0,0,0,0)');
     vg.addColorStop(1, 'rgba(0,0,0,0.55)');
@@ -805,7 +789,6 @@ const B_ICE = (r1,r2) => [r1,_,_,_, _,_,_,_, r1,_,_,_, _,_,_,_,
 const K4  = [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0];
 const K8  = [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0];
 const KH  = [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0];
-const KO  = [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0];
 const KB  = [1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,1,0,1,0,1,0];
 const KF1 = [1,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,1,1,1];
 const KF2 = [1,0,1,0,1,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1,1];
@@ -985,29 +968,17 @@ const SONG_NIGHTSHADE = {
   sectionOrder:[0,1,2,2,3,3,4,4,5]
 };
 
-/* ============================================================
-   BLOSSOM — light, heartwarming, epic.
-   ------------------------------------------------------------
-   · 124 BPM uplifting
-   · sine bass + triangle lead (combo unused elsewhere)
-   · major progression I–V–vi–IV: C → G → Am → F
-   · pad layer with bright major triads
-   · 5 sections: gentle intro → bloom → rise → soar → finale
-   ============================================================ */
 const SONG_BLOSSOM = {
   name:'Blossom', meta:'Uplifting · 124', bpm:124,
   bassWave:'sine', leadWave:'triangle',
   kickTone:150, kickDrop:36, snareTone:220, snareDecay:0.10,
   patterns:[
-    /* 0 — Gentle intro: soft pad, sparse bass, no drums */
     { bass:[36,_,_,_,_,_,_,_, 36,_,_,_,_,_,_,_, 43,_,_,_,_,_,_,_, 43,_,_,_,_,_,_,_],
       lead:null,
       pad:[[60,64,67],_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,
            [55,59,62],_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
       kick:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       snare:null },
-
-    /* 1 — Bloom: soft beat, warm pads */
     { bass:[36,_,_,36, _,_,36,_, 36,_,_,36, _,_,36,_,
             43,_,_,43, _,_,43,_, 43,_,_,43, _,_,43,_],
       lead:null,
@@ -1016,8 +987,6 @@ const SONG_BLOSSOM = {
       kick:K4,
       snare:[0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
              0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0] },
-
-    /* 2 — Rise: lead enters, full chord progression */
     { bass:[36,_,_,36, _,_,36,_, 43,_,_,43, _,_,43,_,
             45,_,_,45, _,_,45,_, 41,_,_,41, _,_,41,_],
       lead:[72,_,_,_, 74,_,76,_, 79,_,_,_, 76,_,74,_,
@@ -1027,8 +996,6 @@ const SONG_BLOSSOM = {
       kick:K4,
       snare:[0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,
              0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0] },
-
-    /* 3 — Soar: epic high lead, driving beat */
     { bass:[36,36,_,_, 43,43,_,_, 45,45,_,_, 41,41,_,_,
             36,36,_,_, 43,43,_,_, 45,45,_,_, 41,41,_,_],
       lead:[84,_,83,_,81,_,79,_, 76,_,79,_,81,_,84,_,
@@ -1039,8 +1006,6 @@ const SONG_BLOSSOM = {
             1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],
       snare:[0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,
              0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1] },
-
-    /* 4 — Finale: max energy, soaring */
     { bass:[36,36,36,36, 43,43,43,43, 45,45,45,45, 41,41,41,41,
             36,36,36,36, 43,43,43,43, 45,45,45,45, 41,41,41,41],
       lead:[84,_,86,_,88,_,86,_, 88,_,91,_,88,_,86,_,
@@ -1622,7 +1587,7 @@ function makeLevelNightshade(){
   return { spikes, blocks, orbs, portals, endX: 13860, name: "Nightshade", theme: 6, levelIndex: 6 };
 }
 
-/* ============ BLOSSOM — the INSANE finale ============ */
+/* ============ BLOSSOM (FIXED) — INSANE finale ============ */
 function makeLevelBlossom(){
   const spikes=[], blocks=[], orbs=[], portals=[];
   const S =(x,y,w,h)=>spikes.push({x,y,w,h,flip:false});
@@ -1792,6 +1757,11 @@ function makeLevelBlossom(){
   S(7580,560,60,60);
   S(7520,560,60,60);
   S(13640,480,40,40);
+  /* --- Fixed ending: ceiling spikes on final climbing platforms --- */
+  SD(10960,320,80,60);
+  SD(11200,260,80,60);
+  SD(11440,200,80,60);
+  SD(11680,140,80,60);
   B(1500,520,220,100);
   B(1840,460,120,160);
   B(2080,400,120,220);
@@ -1830,6 +1800,11 @@ function makeLevelBlossom(){
   B(6880,300,260,20);
   B(6880,220,80,40);
   B(7060,220,80,40);
+  /* --- Fixed ending: tall wall blocks that block the "stay up top" cheese --- */
+  B(10960,-300,80,620);
+  B(11200,-360,80,620);
+  B(11440,-420,80,620);
+  B(11680,-480,80,620);
   OY(1286,466,68,68);
   OD(3686,326,68,68);
   OUP(5206,526,68,68);
@@ -1889,9 +1864,6 @@ const input = { held: false };
 
 function rollCheckpointTarget(){ return 1 + Math.random() * 2; }
 
-/* =========================================================
-   INPUT
-   ========================================================= */
 function press(){ input.held = true; }
 function release(){ input.held = false; }
 
@@ -1923,9 +1895,6 @@ stage.addEventListener('pointerdown', e => {
 window.addEventListener('pointerup',    () => { release(); edPointerUp(); });
 window.addEventListener('pointercancel',() => { release(); edPointerUp(); });
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
 function roundRect(c,x,y,w,h,r){
   r = Math.min(r, w/2, h/2);
   c.beginPath();
@@ -1945,9 +1914,6 @@ function circleRect(cx,cy,r,rx,ry,rw,rh){
 function clamp(v,a,b){ return v<a?a:v>b?b:v; }
 function genId(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
-/* =========================================================
-   PARTICLES
-   ========================================================= */
 function spawnBurst(x,y,color,count){
   for (let i = 0; i < count; i++){
     const a = Math.random()*Math.PI*2;
@@ -1986,9 +1952,6 @@ function makeDecos(){
   }
 }
 
-/* =========================================================
-   PROGRESS
-   ========================================================= */
 function getBest(i){
   if (i < 0) return 0;
   try { const d = JSON.parse(localStorage.getItem('squaredash_best')||'{}'); return d[i]||0; }
@@ -2026,9 +1989,6 @@ function refreshBestUI(){
   });
 }
 
-/* =========================================================
-   GAME FLOW
-   ========================================================= */
 function startLevel(index){
   const songIdx = (LEVEL_SONG_INDEX[index] !== undefined) ? LEVEL_SONG_INDEX[index] : index;
   startBuilt(BUILT[index], songIdx, false);
@@ -2117,9 +2077,6 @@ function respawnAtCheckpoint(){
   p.x = respawnX; p.y = respawnY; p.vy = 0; p.rot = 0; p.dashTimer = 0;
   p.dead = false; p.onGround = false;
   G.trail = [];
-  /* FIX: reset ALL orbs to unused on checkpoint respawn.
-     Previously orbs that were used before dying stayed used after respawn,
-     so the player could not re-trigger them from the checkpoint. */
   for (let i = 0; i < G.orbs.length; i++) G.orbs[i].used = false;
   G.camX = p.x - PLAYER_SCREEN_X;
   G.checkpointTimer = 0;
@@ -2220,9 +2177,6 @@ function showOver(didWin, firstClear){
   updateOverlayVisibility();
 }
 
-/* =========================================================
-   UPDATE
-   ========================================================= */
 function update(dt){
   const p = G.player;
   if (p.dead) return;
@@ -2367,9 +2321,6 @@ function updateCube(dt, p){
   if (!p.onGround) p.rot += 5.0*dt;
 }
 
-/* =========================================================
-   RENDER
-   ========================================================= */
 function render(){
   const th = G.theme;
   const bg = ctx.createLinearGradient(0,0,0,H);
@@ -2802,9 +2753,6 @@ function drawPlayer(){
   ctx.restore();
 }
 
-/* =========================================================
-   MAIN LOOP
-   ========================================================= */
 function frame(now){
   if (!lastTime) lastTime = now;
   let dt = (now - lastTime)/1000;
@@ -2837,9 +2785,6 @@ function frame(now){
   requestAnimationFrame(frame);
 }
 
-/* =========================================================
-   LEVEL CAROUSEL
-   ========================================================= */
 function setupCarousel(trackId, prevId, nextId, dotsId, perPage){
   const track = document.getElementById(trackId);
   let prev = document.getElementById(prevId);
@@ -2847,8 +2792,6 @@ function setupCarousel(trackId, prevId, nextId, dotsId, perPage){
   const dots = document.getElementById(dotsId);
   if (!track || !prev || !next || !dots) return null;
 
-  /* Replace prev/next with clones to strip any old listeners (needed for
-     the custom carousel, which is rebuilt every refresh). */
   const newPrev = prev.cloneNode(true);
   prev.parentNode.replaceChild(newPrev, prev);
   prev = newPrev;
@@ -2883,9 +2826,6 @@ const mainCarousel = setupCarousel('mainLevels', 'mainPrev', 'mainNext', 'mainDo
 const miniCarousel = setupCarousel('miniLevels', 'miniPrev', 'miniNext', 'miniDots', 4);
 let customCarousel = null;
 
-/* =========================================================
-   MENU TABS
-   ========================================================= */
 const tabBtns = document.querySelectorAll('.tab-btn');
 const subTabBtns = document.querySelectorAll('.sub-tab');
 const lvTabBtns = document.querySelectorAll('.lv-tab');
@@ -2915,9 +2855,6 @@ lvTabBtns.forEach(btn => {
   });
 });
 
-/* =========================================================
-   SKINS / COLORS UI
-   ========================================================= */
 const skinsGrid = document.getElementById('skinsGrid');
 const primarySwatches = document.getElementById('primarySwatches');
 const secondarySwatches = document.getElementById('secondarySwatches');
@@ -3042,9 +2979,6 @@ function refreshSkinsUI(){
   skinsSub.textContent = unlockedSkins + ' skins · ' + unlockedColors + ' colors';
 }
 
-/* =========================================================
-   PRACTICE TOGGLE
-   ========================================================= */
 const practiceToggle = document.getElementById('practiceToggle');
 const practiceLabel = document.getElementById('practiceLabel');
 function updatePracticeToggleUI(){
@@ -3057,9 +2991,6 @@ practiceToggle.addEventListener('click', () => {
   updatePracticeToggleUI();
 });
 
-/* =========================================================
-   OVERLAY VISIBILITY
-   ========================================================= */
 function updateOverlayVisibility(){
   if (state === 'menu'){
     muteBtn.classList.add('show');
@@ -3080,9 +3011,6 @@ delBtn.addEventListener('click', (e) => {
   }
 });
 
-/* =========================================================
-   MUTE BUTTON
-   ========================================================= */
 muteBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   const m = Music.toggleMute();
@@ -3091,9 +3019,6 @@ muteBtn.addEventListener('click', (e) => {
   if (!m) Music.init();
 });
 
-/* =========================================================
-   LEVEL CARDS + RETRY + MENU
-   ========================================================= */
 document.querySelectorAll('.level-card').forEach(card => {
   if (card.dataset.i !== undefined){
     card.addEventListener('click', () => {
@@ -3130,9 +3055,6 @@ document.getElementById('btnMenu').addEventListener('click', () => {
   refreshCustomList();
 });
 
-/* =========================================================
-   CUSTOM LEVELS + EDITOR
-   ========================================================= */
 function getCustomLevels(){
   try { const a = JSON.parse(localStorage.getItem('squaredash_custom_levels')||'[]'); return Array.isArray(a) ? a : []; }
   catch(e){ return []; }
@@ -3566,9 +3488,6 @@ function edSave(){
   refreshCustomList();
 }
 
-/* =========================================================
-   EXPORT
-   ========================================================= */
 const exportModal = document.getElementById('exportModal');
 const exportCodeEl = document.getElementById('exportCode');
 
@@ -3681,7 +3600,6 @@ document.getElementById('btnDownloadExport').addEventListener('click', () => {
   toast('💾 Downloaded!');
 });
 
-/* ---------- EDITOR RENDER ---------- */
 function drawEditorObject(o, selected, camX){
   const x = o.x - camX;
   const y = o.y;
@@ -3950,9 +3868,6 @@ function renderEditor(){
 
 document.getElementById('btnNewLevel').addEventListener('click', () => openEditor(null));
 
-/* =========================================================
-   BOOT
-   ========================================================= */
 resize();
 
 (function boot(){
