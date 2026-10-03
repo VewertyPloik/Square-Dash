@@ -729,6 +729,28 @@
                     <div class="lc-best" data-bestlabel="9">Best 0%</div>
                   </div>
                 </button>
+                <button type="button" class="level-card" data-i="10" style="--c:#ef4444">
+                  <div class="lc-top"><span class="lc-num">MINI</span><span class="lc-diff">NORMAL</span></div>
+                  <div>
+                    <div class="lc-name">Burn</div>
+                    <div class="lc-song">♪ Blossom</div>
+                  </div>
+                  <div>
+                    <div class="lc-bar"><i data-best="10"></i></div>
+                    <div class="lc-best" data-bestlabel="10">Best 0%</div>
+                  </div>
+                </button>
+                <button type="button" class="level-card" data-i="11" style="--c:#f472b6">
+                  <div class="lc-top"><span class="lc-num">MINI</span><span class="lc-diff">HARD</span></div>
+                  <div>
+                    <div class="lc-name">Flight</div>
+                    <div class="lc-song">♪ Inversion</div>
+                  </div>
+                  <div>
+                    <div class="lc-bar"><i data-best="11"></i></div>
+                    <div class="lc-best" data-bestlabel="11">Best 0%</div>
+                  </div>
+                </button>
               </div>
             </div>
             <div class="lv-nav">
@@ -2446,13 +2468,176 @@ function makeLevelTraining(){
   OY(1406,466,68,68); OP(2040,380,68,68);
   return { spikes, blocks, orbs, coins, portals, endX: 2310, name: "Training", theme: 3, levelIndex: 9 };
 }
+/* ============ BURN — new NORMAL mini level ============ */
+function makeLevelBurn(){
+  const spikes=[], blocks=[], orbs=[], coins=[], portals=[];
+  const S =(x,y,w,h)=>spikes.push({x,y,w,h,flip:false});
+  const SD=(x,y,w,h)=>spikes.push({x,y,w,h,flip:true});
+  const B =(x,y,w,h)=>blocks.push({x,y,w,h});
+  const OY=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'yellow',pulse:0});
+  const OP=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'pink',  pulse:0});
+  const OD=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'dash',  pulse:0});
+  const OUP=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'up',   pulse:0});
+  const ODN=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'down', pulse:0});
+  const CO=(x,y,w,h)=>coins.push({x:x+w/2,y:y+h/2,r:w/2,collected:false,pulse:0});
+  S(540,560,60,60);
+  S(600,560,60,60);
+  S(660,560,60,60);
+  S(720,560,60,60);
+  S(1740,560,60,60);
+  S(1800,560,60,60);
+  S(1860,560,60,60);
+  S(2220,560,60,60);
+  S(2280,560,60,60);
+  S(2340,560,60,60);
+  S(2400,560,60,60);
+  S(2460,560,60,60);
+  S(2520,560,60,60);
+  S(3220,560,60,60);
+  S(3280,560,60,60);
+  S(3340,560,60,60);
+  S(3400,560,60,60);
+  S(3460,560,60,60);
+  S(3520,560,60,60);
+  S(4340,560,60,60);
+  S(4400,560,60,60);
+  S(4460,560,60,60);
+  S(4520,560,60,60);
+  S(4580,560,60,60);
+  S(4640,560,60,60);
+  S(4700,560,60,60);
+  S(5160,560,60,60);
+  S(5220,560,60,60);
+  S(5280,560,60,60);
+  B(940,420,120,200);
+  B(1140,480,120,140);
+  B(1340,540,120,80);
+  B(2620,460,120,160);
+  B(2860,400,120,220);
+  B(3100,340,120,280);
+  B(3580,400,120,220);
+  B(3780,460,120,160);
+  B(3980,520,120,100);
+  B(4220,460,120,160);
+  OP(626,486,68,68);
+  OP(2300,480,68,68);
+  OP(3306,446,68,68);
+  OP(4480,400,68,68);
+  return { spikes, blocks, orbs, coins, portals,
+           endX: 5544,
+           name: "Burn",
+           theme: 4,
+           levelIndex: 10 };
+}
+/* ============ FLIGHT — new HARD mini level ============ */
+function makeLevelFlight(){
+  const spikes=[], blocks=[], orbs=[], coins=[], portals=[];
+  const S =(x,y,w,h)=>spikes.push({x,y,w,h,flip:false});
+  const SD=(x,y,w,h)=>spikes.push({x,y,w,h,flip:true});
+  const B =(x,y,w,h)=>blocks.push({x,y,w,h});
+  const OY=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'yellow',pulse:0});
+  const OP=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'pink',  pulse:0});
+  const OD=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'dash',  pulse:0});
+  const OUP=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'up',   pulse:0});
+  const ODN=(x,y,w,h)=>orbs.push({x:x+w/2,y:y+h/2,r:w/2,used:false,type:'down', pulse:0});
+  const CO=(x,y,w,h)=>coins.push({x:x+w/2,y:y+h/2,r:w/2,collected:false,pulse:0});
+  S(580,580,60,40);
+  S(640,580,60,40);
+  S(700,580,60,40);
+  S(760,580,60,40);
+  S(1220,580,60,40);
+  S(1280,580,60,40);
+  S(1460,580,60,40);
+  S(1760,580,60,40);
+  S(1820,580,60,40);
+  S(1880,580,60,40);
+  SD(1660,360,60,60);
+  S(2140,560,60,60);
+  S(2200,560,60,60);
+  S(2080,560,60,60);
+  S(820,580,60,40);
+  S(2940,560,60,60);
+  S(3000,560,60,60);
+  S(3060,560,60,60);
+  S(3120,560,60,60);
+  S(3180,560,60,60);
+  S(3240,560,60,60);
+  S(3300,560,60,60);
+  SD(3140,240,60,60);
+  SD(3200,240,60,60);
+  SD(3260,240,60,60);
+  SD(4440,240,60,60);
+  SD(4500,240,60,60);
+  SD(4060,240,60,40);
+  SD(4120,240,60,40);
+  SD(4180,240,60,40);
+  SD(4240,240,60,40);
+  SD(4300,240,60,40);
+  SD(4560,240,60,60);
+  SD(4620,240,60,60);
+  SD(4680,240,60,60);
+  S(3360,560,60,60);
+  S(3420,560,60,60);
+  S(3480,560,60,60);
+  S(3540,560,60,60);
+  S(3600,560,60,60);
+  S(3660,560,60,60);
+  S(3720,560,60,60);
+  S(3780,560,60,60);
+  S(3840,560,60,60);
+  S(3900,560,60,60);
+  S(3960,560,60,60);
+  S(4020,560,60,60);
+  S(4080,560,60,60);
+  S(4140,560,60,60);
+  S(4980,560,60,60);
+  S(5040,560,60,60);
+  S(5100,560,60,60);
+  S(5400,560,60,60);
+  SD(4740,240,60,60);
+  SD(4800,240,60,60);
+  SD(4860,240,60,60);
+  S(5460,560,60,60);
+  S(5520,560,60,60);
+  S(6020,580,60,40);
+  S(6080,580,60,40);
+  S(6140,580,60,40);
+  S(6200,580,60,40);
+  S(6260,580,60,40);
+  S(6320,580,60,40);
+  S(6380,580,60,40);
+  S(6440,580,60,40);
+  S(6840,560,60,60);
+  B(880,580,220,40);
+  B(1100,520,120,100);
+  B(1340,460,120,160);
+  B(1640,-340,120,700);
+  B(2680,200,500,40);
+  B(3180,200,500,40);
+  B(3680,200,500,40);
+  B(4180,200,780,40);
+  B(3660,240,80,60);
+  B(3960,240,80,120);
+  B(4360,240,80,120);
+  OY(660,480,68,68);
+  OP(1520,480,68,68);
+  OUP(2686,506,68,68);
+  OY(4140,300,68,68);
+  ODN(4660,340,68,68);
+  OD(6060,480,68,68);
+  return { spikes, blocks, orbs, coins, portals,
+           endX: 6930,
+           name: "Flight",
+           theme: 7,
+           levelIndex: 11 };
+}
 
 const BUILT = [
   makeLevel1(), makeLevel2(), makeLevel3(), makeLevel4(),
   makeLevelFlame(), makeLevelL6(), makeLevelNightshade(), makeLevelBlossom(),
-  makeLevelRust(), makeLevelTraining()
+  makeLevelRust(), makeLevelTraining(), makeLevelBurn(), makeLevelFlight()
 ];
-const LEVEL_SONG_INDEX = [0, 1, 2, 3, 4, 5, 6, 7, 8, 2];
+const LEVEL_SONG_INDEX = [0, 1, 2, 3, 4, 5, 6, 7, 8, 2, 7, 5];
 
 /* =========================================================
    GAME STATE
@@ -2586,7 +2771,7 @@ function isColorUnlocked(color){
   return true;
 }
 function refreshBestUI(){
-  const colors = ['#4ade80', '#facc15', '#60a5fa', '#a855f7', '#ef4444', '#7dd3fc', '#0d5c2e', '#f472b6', '#c2410c', '#a855f7'];
+  const colors = ['#4ade80', '#facc15', '#60a5fa', '#a855f7', '#ef4444', '#7dd3fc', '#0d5c2e', '#f472b6', '#c2410c', '#a855f7', '#ef4444', '#f472b6'];
   document.querySelectorAll('[data-best]').forEach(el => {
     const i = +el.dataset.best;
     el.style.width = (getBest(i)*100)+'%';
